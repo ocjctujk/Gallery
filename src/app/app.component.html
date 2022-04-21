@@ -1,3 +1,30 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  <ion-menu side="start" meduId="first" contentId="main">
+    <ion-header>
+      <ion-toolbar color="primary">
+        <ion-title> Menu </ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item routerLink="home">
+            <ion-icon  name="camera" slot="start"></ion-icon>
+            <ion-label>camera</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item   routerLink="gallery">
+            <ion-icon  name="image" slot="start"></ion-icon>
+            <ion-label>gallery</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+
+       
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

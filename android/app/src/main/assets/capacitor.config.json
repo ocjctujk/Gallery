@@ -1,0 +1,6 @@
+{
+	"appId": "io.IPhoneCam.com",
+	"appName": "IPhoneCam",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
