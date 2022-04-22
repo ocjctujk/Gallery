@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PhotoService, UserPhoto } from '../home/photo.service';
 
 @Component({
@@ -7,15 +8,17 @@ import { PhotoService, UserPhoto } from '../home/photo.service';
   styleUrls: ['./gallery.page.scss'],
 })
 export class GalleryPage implements OnInit {
-  imageSource = 'https://i.pinimg.com/originals/43/16/60/4316602d5ed1c62195ffd7fd86f7af02.jpg';
   photos: UserPhoto[] = [];
-  constructor(private photoService : PhotoService) { }
+  constructor(private photoService: PhotoService, private router: Router) {}
 
   ngOnInit() {
     // this.photoService.fetchData();
-    this.photoService.photosSubject.subscribe(photos=>{
-      this.photos = [...photos]; 
-    })
+    this.photoService.photosSubject.subscribe((photos) => {
+      this.photos = [...photos];
+    });
   }
 
+  onClick(webviewPath: string) {
+    this.router.navigate(['gallery', webviewPath]);
+  }
 }

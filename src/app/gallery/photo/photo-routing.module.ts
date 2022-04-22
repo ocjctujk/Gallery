@@ -1,16 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { GalleryPage } from './gallery.page';
+import { PhotoPage } from './photo.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: GalleryPage
-  },
-  {
-    path: ':id',
-    loadChildren: () => import('./photo/photo.module').then( m => m.PhotoPageModule)
+    component: PhotoPage
   }
 ];
 
@@ -18,4 +14,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class GalleryPageRoutingModule {}
+export class PhotoPageRoutingModule {}

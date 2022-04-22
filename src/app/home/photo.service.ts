@@ -12,10 +12,7 @@ export interface UserPhoto {
   providedIn: 'root',
 })
 export class PhotoService {
-  private _photos: UserPhoto[] = [
-    // "https://i.pinimg.com/originals/43/16/60/4316602d5ed1c62195ffd7fd86f7af02.jpg",
-    // "https://i.pinimg.com/originals/84/5d/50/845d508c345e2d594238f3451e345826.jpg"
-  ];
+  private _photos: UserPhoto[] = [];
   photosSubject = new BehaviorSubject<UserPhoto[]>(this._photos);
   constructor() {}
 
@@ -23,6 +20,15 @@ export class PhotoService {
     this._photos.push(photo);
     this.photosSubject.next(this._photos);
     // this.setData();
+  }
+
+  removePhoto(webviewPath: string) {
+    this._photos = [
+      ...this._photos.filter((photo) => {
+        return photo.webviewPath != webviewPath;
+      }),
+    ];
+    this.photosSubject.next(this._photos);
   }
 
   // async fetchData() {
@@ -36,7 +42,7 @@ export class PhotoService {
   //       path: photo.filepath,
   //       directory: Directory.Data,
   //     });
-    
+
   //     // Web platform only: Load the photo as base64 data
   //     photo.webviewPath = `data:image/jpeg;base64,${readFile.data}`;
   //   }
@@ -48,4 +54,29 @@ export class PhotoService {
   //     value: JSON.stringify(this._photos),
   //   });
   // }
+
+  fakeData = [
+    {
+      filepath: 'soon...',
+      webviewPath:
+        'https://i.pinimg.com/originals/43/16/60/4316602d5ed1c62195ffd7fd86f7af02.jpg',
+    },
+    {
+      filepath: 'soon...',
+      webviewPath:
+        'https://wallpaperbat.com/img/124408-wallpaper-ronaldo-juventus-cristiano-ronaldo-juventus-cristano.jpg',
+    },
+    {
+      filepath: 'soon...',
+      webviewPath: 'https://wallpaperaccess.com/full/277584.jpg',
+    },
+    {
+      filepath: 'soon...',
+      webviewPath: 'https://wallpaperaccess.com/full/1097840.jpg',
+    },
+    {
+      filepath: 'soon...',
+      webviewPath: 'https://wallpaperaccess.com/full/1222831.jpg  ',
+    },
+  ];
 }
